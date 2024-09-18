@@ -1,0 +1,89 @@
+-- Checking whether system has ANSI C header files
+-- ANSI C header files - found
+-- Checking for module 'sndfile>=1.0.0'
+--   Package 'sndfile', required by 'virtual:world', not found
+-- Checking for module 'lash-1.0>=0.3'
+--   Package 'lash-1.0', required by 'virtual:world', not found
+-- Checking for module 'libsystemd'
+--   Package 'libsystemd', required by 'virtual:world', not found
+-- Looking for ladspa.h
+-- Looking for ladspa.h - found
+-- Checking for module 'libinstpatch-1.0>=1.1.0'
+--   Package 'libinstpatch-1.0', required by 'virtual:world', not found
+-- Checking for module 'sdl2>=2.0.4'
+--   Package 'sdl2', required by 'virtual:world', not found
+-- Found OpenMP 201511
+-- Looking for sinf
+-- Looking for sinf - found
+-- Looking for cosf
+-- Looking for cosf - found
+-- Looking for fabsf
+-- Looking for fabsf - found
+-- Looking for powf
+-- Looking for powf - found
+-- Looking for sqrtf
+-- Looking for sqrtf - found
+-- Looking for logf
+-- Looking for logf - found
+-- Looking for inet_ntop
+-- Looking for inet_ntop - found
+-- Check size of socklen_t
+-- Check size of socklen_t - done
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- 
+**************************************************************
+Build Summary:
+Build type:            RelWithDebInfo
+Install Prefix:        /usr/local
+
+Audio / MIDI driver support:
+  ALSA:                  yes
+  CoreAudio:             no
+  CoreMIDI:              no
+  DSound:                no
+  JACK:                  yes
+  MidiShare:             no
+  Oboe:                  no
+  OpenSLES:              no
+  OS/2 DART:             no
+  OSS:                   yes
+  PortAudio:             no
+  PulseAudio:            yes
+  SDL2:                  no
+  WASAPI:                no
+  WaveOut:               no
+  WinMidi:               no
+
+Support for SF3 files:   no (libsndfile not found)
+Support for DLS files:   no (libinstpatch not found)
+
+Audio to file rendering: yes
+  libsndfile:            no (RAW PCM rendering only)
+
+Miscellaneous support:
+  D-Bus:                 yes
+  LADSPA support:        yes
+  LASH support:          no
+  NETWORK Support:       yes
+    IPV6 Support:        yes
+  Readline:              yes (NOTE: GPL library)
+  systemd:               no
+  getopt:                yes
+
+Developer nerds info:
+  Samples type:          double
+  Multithread rendering: yes
+  OpenMP 4.0:            yes
+  Profiling:             no
+  Debug Build:           no
+  Trap on FPE (debug):   no
+  Check FPE (debug):     no
+  UBSan (debug):         no
+  Coverage:              no
+
+**************************************************************
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/david/proj/fluidsynth/doc

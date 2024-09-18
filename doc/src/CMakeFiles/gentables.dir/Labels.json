@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/CMakeFiles/gentables"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/CMakeFiles/gentables.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/CMakeFiles/gentables-complete.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-build.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-configure.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-download.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-install.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-mkdir.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-patch.rule"
+		},
+		{
+			"file" : "/home/david/proj/fluidsynth/doc/src/gentables-prefix/src/gentables-stamp/gentables-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"gentables"
+		],
+		"name" : "gentables"
+	}
+}

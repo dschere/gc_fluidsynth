@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib64
+includedir=${prefix}/include
+
+Name: FluidSynth
+Description: Software SoundFont synth
+Version: 2.2.7
+Requires.private: glib-2.0 gthread-2.0 libpulse-simple alsa jack dbus-1 gmodule-2.0 readline
+Libs: -L${libdir} -lfluidsynth
+Libs.private: -lgthread-2.0 -lglib-2.0 -lgmodule-2.0 -lglib-2.0 -lglib-2.0 -ljack -lasound -lpulse-simple -lpulse -ldbus-1 -lreadline -lm /usr/lib/gcc/x86_64-linux-gnu/12/libgomp.so /usr/lib/x86_64-linux-gnu/libpthread.a
+Cflags: -I${includedir}

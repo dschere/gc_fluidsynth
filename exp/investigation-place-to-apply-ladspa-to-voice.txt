@@ -1,0 +1,129 @@
+fluid_synth.c 
+   fluid_synth_alloc_voice_LOCAL()
+   
+            // chan is the channel number passed by the USER. 
+            channel = synth->channel[chan];
+            if(fluid_voice_init(voice, sample, zone_range, channel, key, vel,
+                                synth->storeid, ticks, synth->gain) != FLUID_OK)
+                        
+   
+       fluid_voice.c -> fluid_voice_init()
+           calls fluid_rvoice_buffers_set_mapping defined in  fluid_rvoice.c
+               this maps 
+           code example:
+              
+            i = 2 * (voice->chan % channel->synth->audio_groups);
+            UPDATE_RVOICE_GENERIC_I2(fluid_rvoice_buffers_set_mapping, &voice->rvoice->buffers, 0, i);
+            UPDATE_RVOICE_GENERIC_I2(fluid_rvoice_buffers_set_mapping, &voice->rvoice->buffers, 1, i + 1);     
+
+            
+            // what is going on 
+                    #define DECLARE_FLUID_RVOICE_FUNCTION(name) void name(void* obj, const fluid_rvoice_param_t param[MAX_EVENT_PARAMS])
+
+                    #define UPDATE_RVOICE_GENERIC_I2(proc, obj, iarg1, iarg2) \
+                      do { \
+                          fluid_rvoice_param_t param[MAX_EVENT_PARAMS]; \
+                          param[0].i = iarg1; \
+                          param[1].i = iarg2; \
+                          fluid_rvoice_eventhandler_push(voice->eventhandler, proc, obj, param); \
+                      } while (0)
+
+
+                    DECLARE_FLUID_RVOICE_FUNCTION(fluid_rvoice_buffers_set_mapping)
+                    {
+                        fluid_rvoice_buffers_t *buffers = obj;
+                        unsigned int bufnum = param[0].i;
+                        int mapping = param[1].i;
+
+                        if(fluid_rvoice_buffers_check_bufnum(buffers, bufnum) != FLUID_OK)
+                        {
+                            return;
+                        }
+
+                        buffers->bufs[bufnum].mapping = mapping;
+                    }
+
+
+
+// later after playing 
+
+
+
+fluid_synth.c fluid_synth_render_blocks
+     fluid_rvoice_mixer.c
+         fluid_rvoice_mixer_render(fluid_rvoice_mixer_t *mixer, int blockcount)
+              // were voices get mixed and effects applied.
+              fluid_rvoice_mixer_process_fx
+
+
+
+Investigate fluid_mixer_buffer_process_finished_voices 
+
+new_fluid_rvoice_mixer(int buf_count, int fx_buf_count, int fx_units, 
+   ... event handler that will handle vinished voices
+   
+
+
+
+How does reverb get set so we can have an example.
+tcp cmd -> fluid_handle_reverbpreset 
+fluid_synth_set_reverb_full
+    fluid_rvoice_eventhandler_push(synth->eventhandler,
+         fluid_rvoice_mixer_set_reverb_params,
+         synth->eventhandler->mixer,
+         param);
+
+
+   
+
+
+
+
+Idea #1
+   Modify 
+      In file fluid_rvoice.h 
+          struct _fluid_rvoice_t
+              add 'int chan' populated in fluid_voice_init when we 
+              know the channel number. Should be initialized to -1. 
+              * Must handle when channel is reprogrammed ?
+         
+
+In fluid_rvoice_mixer.c:
+
+fluid_mixer_buffers_render_one(fluid_mixer_buffers_t *buffers,
+                               fluid_rvoice_t *rvoice, fluid_real_t **dest_bufs,
+                               unsigned int dest_bufcount, fluid_real_t *src_buf, int blockcount)
+{
+    int i, total_samples = 0, last_block_mixed = 0;
+
+    for(i = 0; i < blockcount; i++)
+    {
+        /* render one block in src_buf */
+        int s = fluid_rvoice_write(rvoice, &src_buf[FLUID_BUFSIZE * i]);
+
+        fluid_real_t *chan_buffer = src_buf[FLUID_BUFSIZE * i];
+        rvoice->chan has the channel number.
+        
+        // apply effects using my user dynamically controlled effects
+        // rack
+        overwrite src_buf .
+        
+        ...
+    }    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
