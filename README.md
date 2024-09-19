@@ -1,3 +1,16 @@
+## Hacked version of fluidsynth for guitar composer project.
+
+New functionality 
+
+  fluid_synth_set_user_per_channel_fx_func that allows for effects to be applied
+  on a per channel basis. Fluidsynth has a ladspa interface but I found it to
+  be too limited for my needs. I wanted dynamic control over parameters on a per
+  channel basis.
+
+   
+
+
+
 # FluidSynth
 
 | | Build Status |

@@ -18,8 +18,8 @@
 # 02111-1307, USA
 
 # CMake based build system. Pedro Lopez-Cabanillas <plcl@users.sf.net>
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g3")
+#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3")
+#set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g3")
 
 include_directories (
     ${CMAKE_BINARY_DIR}
