@@ -269,5 +269,8 @@ void fluid_synth_release_voice_on_same_note_LOCAL(fluid_synth_t *synth, int chan
 int
 fluid_synth_set_user_per_channel_fx_func(fluid_synth_t *synth, PerChannelFxFuncType callback, void *userdata);
 
+ void fluid_synth_api_enter(fluid_synth_t *synth);
+ void fluid_synth_api_exit(fluid_synth_t *synth);
+
 
 #endif  /* _FLUID_SYNTH_H */

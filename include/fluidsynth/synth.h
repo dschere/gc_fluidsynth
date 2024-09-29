@@ -540,7 +540,9 @@ FLUIDSYNTH_API
 int fluid_synth_set_user_per_channel_fx_func(fluid_synth_t *synth, 
     PerChannelFxFuncType callback, void *userdata);
 
- 
+FLUIDSYNTH_API void fluid_synth_api_enter(fluid_synth_t *synth);
+FLUIDSYNTH_API void fluid_synth_api_exit(fluid_synth_t *synth);
+
 
 
 
