@@ -3,7 +3,7 @@
  * This code is in the public domain.
  *
  * To compile:
- *   gcc -o fluidsynth_arpeggio -lfluidsynth fluidsynth_arpeggio.c
+ *   gcc -o fluidsynth_arpeggio  fluidsynth_arpeggio.c -lfluidsynth
  *
  * To run:
  *   fluidsynth_arpeggio soundfont [steps [duration]]
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fluidsynth.h>
+
+#include <time.h>
 
 fluid_synth_t *synth;
 fluid_audio_driver_t *audiodriver;
@@ -39,7 +41,7 @@ schedule_noteon(int chan, short key, unsigned int ticks)
     fluid_event_set_source(ev, -1);
     fluid_event_set_dest(ev, synth_destination);
     fluid_event_noteon(ev, chan, key, 127);
-    fluid_sequencer_send_at(sequencer, ev, ticks, 1);
+    fluid_sequencer_send_at(sequencer, ev, ticks, 0);
     delete_fluid_event(ev);
 }
 
@@ -51,7 +53,7 @@ schedule_noteoff(int chan, short key, unsigned int ticks)
     fluid_event_set_source(ev, -1);
     fluid_event_set_dest(ev, synth_destination);
     fluid_event_noteoff(ev, chan, key);
-    fluid_sequencer_send_at(sequencer, ev, ticks, 1);
+    fluid_sequencer_send_at(sequencer, ev, ticks, 0);
     delete_fluid_event(ev);
 }
 
@@ -72,8 +74,8 @@ void
 schedule_pattern(void)
 {
     unsigned int i;
-    int note_time, note_duration;
-    note_time = time_marker;
+    int note_time = 0, note_duration;
+    //note_time = time_marker;
     note_duration = duration / pattern_size;
 
     for(i = 0; i < pattern_size; ++i)
@@ -158,7 +160,9 @@ main(int argc, char *argv[])
             time_marker = fluid_sequencer_get_tick(sequencer);
             /* schedule patterns */
             schedule_pattern();
-            schedule_timer_event();
+
+            sleep(3);
+            //schedule_timer_event();
             schedule_pattern();
             /* wait for user input */
             printf("press <Enter> to stop\n");

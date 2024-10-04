@@ -48,6 +48,7 @@ struct _fluid_event_t
     unsigned int duration;
     double scale;
     void *data;
+    void (*user_callback)(void *data);
 };
 
 unsigned int fluid_event_get_time(fluid_event_t *evt);

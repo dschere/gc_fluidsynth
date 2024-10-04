@@ -323,6 +323,11 @@ fluid_seq_fluidsynth_callback(unsigned int time, fluid_event_t *evt, fluid_seque
 
     case FLUID_SEQ_TIMER:
         /* nothing in fluidsynth */
+        if (evt->user_callback) {
+            evt->user_callback( evt->data );
+        } else {
+            fprintf(stderr,"fluid_seqbind: evt->user_callback null\n");
+        }
         break;
 
     case FLUID_SEQ_SCALE:

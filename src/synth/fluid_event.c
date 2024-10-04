@@ -131,10 +131,11 @@ fluid_event_set_dest(fluid_event_t *evt, fluid_seq_id_t dest)
  * @param data User supplied data pointer
  */
 void
-fluid_event_timer(fluid_event_t *evt, void *data)
+fluid_event_timer(fluid_event_t *evt, void *data, void (*cb)(void*) )
 {
     evt->type = FLUID_SEQ_TIMER;
     evt->data = data;
+    evt->user_callback = cb;
 }
 
 /**

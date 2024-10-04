@@ -78,7 +78,7 @@ FLUIDSYNTH_API void fluid_event_set_source(fluid_event_t *evt, fluid_seq_id_t sr
 FLUIDSYNTH_API void fluid_event_set_dest(fluid_event_t *evt, fluid_seq_id_t dest);
 
 /* Timer events */
-FLUIDSYNTH_API void fluid_event_timer(fluid_event_t *evt, void *data);
+FLUIDSYNTH_API void fluid_event_timer(fluid_event_t *evt, void *data, void (*cb)(void* data));
 
 /* Note events */
 FLUIDSYNTH_API void fluid_event_note(fluid_event_t *evt, int channel,
